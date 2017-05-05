@@ -20,7 +20,7 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Lanzallamas> ().enabled = true;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = false;
-			//GetComponent <Armadura> ().enabled = false;
+			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
@@ -28,7 +28,7 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = true;
 			GetComponent <BotasPW> ().enabled = false;
-			//GetComponent <Armadura> ().enabled = false;
+			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
@@ -36,11 +36,11 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = true;
-			//GetComponent <Armadura> ().enabled = false;
+			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-		}/*else if (other.gameObject.CompareTag("Armadura")){
+		}else if (other.gameObject.CompareTag("Armadura")){
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = false;
@@ -48,7 +48,7 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-		}*/
+		}
 	}	
 
 }
