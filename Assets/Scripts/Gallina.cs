@@ -7,10 +7,12 @@ public class Gallina : MonoBehaviour {
 	public static Gallina instance;
 	public GameObject camara;
 	private float dif;
+	AnimacionGallina[] animacionGallina;
 	// Use this for initialization
 	void Start(){
 		dif = camara.transform.position.x - this.transform.position.x;
 		InvokeRepeating ("colocar", 0f, 0.1f);
+		animacionGallina = GetComponents<AnimacionGallina> ();
 	}
 	void Awake () {
 		instance = this;
@@ -30,6 +32,14 @@ public class Gallina : MonoBehaviour {
 			}
 		}
 		if (other.gameObject.CompareTag("PWLanzallamas")){
+			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			foreach(AnimacionGallina i in animacionGallina){
+				if (i.nombre.Equals ("Fuego")) {
+					i.enabled = true;
+				} else {
+					i.enabled = false;
+				}
+			}
 			GetComponent <Lanzallamas> ().enabled = true;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = false;
@@ -38,6 +48,14 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 		}else if (other.gameObject.CompareTag("PWTripleSalto")){
+			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			foreach(AnimacionGallina i in animacionGallina){
+				if (i.nombre.Equals ("Normal")) {
+					i.enabled = true;
+				} else {
+					i.enabled = false;
+				}
+			}
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = true;
 			GetComponent <BotasPW> ().enabled = false;
@@ -46,6 +64,14 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 		}else if (other.gameObject.CompareTag("PWBotas")){
+			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			foreach(AnimacionGallina i in animacionGallina){
+				if (i.nombre.Equals ("Botas")) {
+					i.enabled = true;
+				} else {
+					i.enabled = false;
+				}
+			}
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = true;
@@ -53,7 +79,15 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-		}else if (other.gameObject.CompareTag("Armadura")){
+		}else if (other.gameObject.CompareTag("PWArmadura")){
+			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			foreach(AnimacionGallina i in animacionGallina){
+				if (i.nombre.Equals ("Armadura")) {
+					i.enabled = true;
+				} else {
+					i.enabled = false;
+				}
+			}
 			GetComponent <Lanzallamas> ().enabled = false;
 			GetComponent <TripleSalto> ().enabled = false;
 			GetComponent <BotasPW> ().enabled = false;
