@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 41e6f01dc9e89a94bb95f3913d9dd2e0
+timeCreated: 1491988613
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - camara: {fileID: 1979801906772152, guid: 4ad0fb20364ee984189d6c6f04d063a7, type: 2}
+  - fondo1: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
