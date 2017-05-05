@@ -13,6 +13,6 @@ public class MovHorizContinuo : MonoBehaviour {
 	}
 
 	void Movimiento(){		
-		transform.Translate (new Vector3(direccion*velX*Time.deltaTime,0,0));
+		transform.Translate (new Vector3(direccion*GameManager.dificultad*velX*Time.deltaTime,0,0));
 	}
 }
