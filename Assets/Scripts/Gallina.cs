@@ -5,9 +5,22 @@ using UnityEngine;
 public class Gallina : MonoBehaviour {
 
 	public static Gallina instance;
+	public GameObject camara;
+	private float dif;
 	// Use this for initialization
+	void Start(){
+		dif = camara.transform.position.x - this.transform.position.x;
+		InvokeRepeating ("colocar", 0f, 0.1f);
+	}
 	void Awake () {
 		instance = this;
+	}
+	void colocar(){
+		float dif2 = camara.transform.position.x - this.transform.position.x;
+		if (dif2 > dif+1)
+			this.transform.Translate (0.05f, 0f, 0f);
+		else if (dif2 < dif-1)
+			this.transform.Translate (-0.05f, 0f, 0f);
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if (!GetComponent<Inmortalidad> ().inmortal){
