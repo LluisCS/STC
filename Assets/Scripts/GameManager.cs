@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void FixedUpdate(){
-		dificultad += 0.004f;
+		dificultad += 0.0001f;
 	}
 
 	public void Pausa(){
