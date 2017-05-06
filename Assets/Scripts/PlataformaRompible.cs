@@ -11,6 +11,7 @@ public class PlataformaRompible : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D coll) {
 		Invoke("destruir", t);
+		GetComponent<Animacion> ().enabled = true;
 	}
 
 	public void destruir() {
