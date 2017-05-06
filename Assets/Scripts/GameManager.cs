@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
 
 	public GameObject ui_pausa;
 	public GameObject ui_fin;
+	public GameObject hud;
 
 
 	void Start () {
@@ -95,5 +96,10 @@ public class GameManager : MonoBehaviour {
 	public void Reload(){
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		Time.timeScale = 1;
+	}
+
+	public void MuestraPuntos(){
+		GameObject go = hud.transform.GetChild (0).gameObject;
+		go.GetComponent<Text>().text = "Puntos: " + puntos;
 	}
 }

@@ -10,6 +10,7 @@ public class Pienso : MonoBehaviour {
 		if (other.GetComponentInParent <Gallina> ()){//compruebo que se choca con la gallina			
 			GameManager.instance.puntos += (Valorpuntos*GameManager.instance.bonificacion);
 			Debug.Log (GameManager.instance.puntos + " puntos");
+			GameManager.instance.MuestraPuntos ();
 			GetComponent<AudioSource> ().Play ();
 			GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (gameObject,GetComponent<AudioSource> ().clip.length);
