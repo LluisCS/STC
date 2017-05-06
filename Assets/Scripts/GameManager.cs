@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void FixedUpdate(){
-		dificultad += 0.004f;
+		dificultad += 0.0001f;
 	}
 
 	public void Pausa(){
@@ -99,7 +99,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void MuestraPuntos(){
-		GameObject go = hud.transform.GetChild (0).gameObject;
-		go.GetComponent<Text>().text = "Puntos: " + puntos;
+		GameObject go = hud.transform.GetChild (1).gameObject;
+		go.GetComponent<Text>().text = "" + puntos;
+	}
+
+	public void MuestraPowerup(Sprite im){
+		GameObject go = hud.transform.GetChild (2).gameObject;
+		Debug.Log (go.name);
+		Image i = go.GetComponent<Image>();
+		i.sprite = im;
+		i.color = Color.white;
 	}
 }

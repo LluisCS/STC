@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Gallina : MonoBehaviour {
@@ -25,12 +26,13 @@ public class Gallina : MonoBehaviour {
 			this.transform.Translate (-0.05f, 0f, 0f);
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if (!GetComponent<Inmortalidad> ().inmortal){
-			if(other.CompareTag("Obstaculo")||other.CompareTag("Enemigo")||other.CompareTag("DeadZone")){
+		if (!GetComponent<Inmortalidad> ().inmortal) {
+			if (other.CompareTag ("Obstaculo") || other.CompareTag ("Enemigo") || other.CompareTag ("DeadZone")) {
 				Debug.Log ("Has muerto");
 				GameManager.instance.Muerto ();
 			}
-		}
+		} 
+
 		if (other.gameObject.CompareTag("PWLanzallamas")){
 			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
@@ -47,6 +49,8 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			GameManager.instance.MuestraPowerup (s);
 		}else if (other.gameObject.CompareTag("PWTripleSalto")){
 			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
@@ -63,6 +67,8 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			GameManager.instance.MuestraPowerup (s);
 		}else if (other.gameObject.CompareTag("PWBotas")){
 			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
@@ -79,6 +85,8 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			GameManager.instance.MuestraPowerup (s);
 		}else if (other.gameObject.CompareTag("PWArmadura")){
 			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
@@ -95,7 +103,10 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			GameManager.instance.MuestraPowerup (s);
 		}
+
 	}	
 
 }
