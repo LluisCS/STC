@@ -6,6 +6,7 @@ public class Gallina : MonoBehaviour {
 
 	public static Gallina instance;
 	public GameObject camara;
+	public Component[] powerUps;
 	private float dif;
 	AnimacionGallina[] animacionGallina;
 	// Use this for initialization
@@ -14,6 +15,19 @@ public class Gallina : MonoBehaviour {
 		InvokeRepeating ("colocar", 0f, 0.1f);
 		animacionGallina = GetComponents<AnimacionGallina> ();
 	}
+
+	/*void Update(){
+	
+		foreach(AnimacionGallina i in animacionGallina){
+			if (i.nombre.Equals ("Fuego")) {
+				i.enabled = true;
+			} else {
+				i.enabled = false;
+			}
+		}
+	
+	}*/
+
 	void Awake () {
 		instance = this;
 	}
@@ -32,7 +46,7 @@ public class Gallina : MonoBehaviour {
 			}
 		}
 		if (other.gameObject.CompareTag("PWLanzallamas")){
-			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
 				if (i.nombre.Equals ("Fuego")) {
 					i.enabled = true;
@@ -48,7 +62,7 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 		}else if (other.gameObject.CompareTag("PWTripleSalto")){
-			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
 				if (i.nombre.Equals ("Normal")) {
 					i.enabled = true;
@@ -64,7 +78,7 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 		}else if (other.gameObject.CompareTag("PWBotas")){
-			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
 				if (i.nombre.Equals ("Botas")) {
 					i.enabled = true;
@@ -80,7 +94,7 @@ public class Gallina : MonoBehaviour {
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 		}else if (other.gameObject.CompareTag("PWArmadura")){
-			//GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
+			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
 				if (i.nombre.Equals ("Armadura")) {
 					i.enabled = true;

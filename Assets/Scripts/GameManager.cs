@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 	public int bonificacion = 1;
 	public float duracionX2 = 7;
-	public GameObject camara,fondo1;
-
+	public GameObject camara;
+	public AudioClip muerte, botones;
 	public GameObject ui_pausa;
 	public GameObject ui_fin;
 	public GameObject hud;
@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Muerto(){
+		camara.GetComponent<AudioSource> ().Stop ();
+		GetComponent<AudioSource> ().Play ();
 		Time.timeScale = 0;
 		MostrarMenuFinPartida ();
 	}
@@ -40,8 +42,10 @@ public class GameManager : MonoBehaviour {
 	public void Update(){
 		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && ui_pausa !=null){
 			if (!paused) {
+				GetComponent<AudioSource> ().clip = botones;
 				MostrarMenuPausa ();
 			} else {
+				GetComponent<AudioSource> ().clip = muerte;
 				OcultarUis ();
 				Pausa ();
 			}
@@ -49,7 +53,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void FixedUpdate(){
-		dificultad += 0.0001f;
+		dificultad += 0.0004f;
 	}
 
 	public void Pausa(){
@@ -61,12 +65,14 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Jugar(int dificultad){
+		GetComponent<AudioSource> ().Play ();
 		SceneManager.LoadScene ("juego");
 		Time.timeScale = 1;
 		GameManager.dificultad = dificultad;
 	}
 
 	public void VolverMenuPrincipal(){
+		GetComponent<AudioSource> ().Play ();
 		SceneManager.LoadScene ("menu");
 	}
 
@@ -78,6 +84,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void OcultarMenuPausa(){
+		GetComponent<AudioSource> ().Play ();
 		Pausa ();
 		OcultarUis ();
 	}
@@ -94,6 +101,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Reload(){
+		GetComponent<AudioSource> ().Play ();
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		Time.timeScale = 1;
 	}
