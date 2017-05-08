@@ -9,7 +9,6 @@ public class LlamaBehavior : MonoBehaviour {
 	void OnEnable () {
 		Invoke ("Destruir", 0.7f);
 		Invoke ("ActivarCollider",0.1f);
-		//GetComponent<AudioSource> ().playOnAwake = false;
 	}
 	void Destruir () {
 		if(noDestruyendo){
@@ -17,8 +16,9 @@ public class LlamaBehavior : MonoBehaviour {
 			GetComponent<SpriteRenderer> ().enabled = false;
 			GetComponent<LlamaBehavior> ().enabled = false;
 			GetComponent<BoxCollider2D> ().enabled = false;
-			GetComponent<AudioSource> ().clip = c;
-			GetComponent<AudioSource> ().Play ();
+			Gallina.instance.gameObject.GetComponent<AudioSource> ().volume = 0.1f;
+			Gallina.instance.gameObject.GetComponent<AudioSource> ().clip = c;
+			Gallina.instance.gameObject.GetComponent<AudioSource> ().Play ();
 			Invoke ("RetardoDestroy", c.length);
 		}
 	}
@@ -30,7 +30,7 @@ public class LlamaBehavior : MonoBehaviour {
 			Destroy (other.gameObject);
 			Debug.Log ("destruido");
 		}
-		if (!other.gameObject.GetComponent<Pienso>()&&!other.gameObject.GetComponent<SonidosEnemigos>()) {
+		if (!other.gameObject.GetComponent<Pienso>()) {
 			Destruir ();
 		}
 	}

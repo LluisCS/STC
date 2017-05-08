@@ -5,6 +5,7 @@ using UnityEngine;
 public class Aullar : MonoBehaviour {
 	public GameObject aullido;
 	public float frecuencia;
+	bool cerca = false;
 	// Use this for initialization
 	void Start () {
 		InvokeRepeating ("Spawn", 0f, frecuencia);
@@ -14,6 +15,7 @@ public class Aullar : MonoBehaviour {
 	void Spawn () {
 		GameObject spw = Instantiate (aullido);
 		spw.transform.position = this.transform.position;
-
+		GetComponent<AudioSource> ().Play();
 	}
+
 }

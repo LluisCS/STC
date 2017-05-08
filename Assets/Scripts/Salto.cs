@@ -3,12 +3,12 @@ using System.Collections;
 
 public class Salto : MonoBehaviour
 {
-
+	public AudioClip audioSalto;
     public float fuerza = 5;    //Fuerza que se ejerce sobre le personaje al saltar
 	public int maxSaltos = 2;       //El nº máximo de saltos que se pueden dar
 	int currentSaltos = 0;   //El nº de saltos que se han dado
     //public bool saltoX3 = false;
-  
+  	
 
     // Update is called once per frame
     void Update()
@@ -30,6 +30,8 @@ public class Salto : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, fuerza);
                 currentSaltos++;                    //suma uno a los saltos que se han dado
+				GetComponent<AudioSource>().volume = 0.5f;
+				GetComponent<AudioSource>().clip = audioSalto;
 				GetComponent<AudioSource> ().Play ();
             }
 

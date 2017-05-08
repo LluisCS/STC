@@ -18,7 +18,7 @@ public class AullidoBehavior : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Gallina")) {
 			other.gameObject.GetComponent <BotasPW>().enabled = false;
 			other.gameObject.GetComponent <Lanzallamas>().enabled = false;
-			other.gameObject.GetComponent <PWx2>().enabled = false;
+			GameManager.instance.bonificacion = 1;
 			other.gameObject.GetComponent <TripleSalto>().enabled = false;
 			other.gameObject.GetComponent <Armadura>().enabled = false;
 		}
