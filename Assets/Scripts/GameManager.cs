@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
 	public GameObject ui_fin;
 	public GameObject hud;
 
+	bool muerto = false;
+
 
 	void Start () {
 		instance = this;
@@ -32,13 +34,15 @@ public class GameManager : MonoBehaviour {
 	public void Muerto(){
 		Time.timeScale = 0;
 		MostrarMenuFinPartida ();
+		muerto = true;
 	}
 
 	bool paused = false;
 	public static float dificultad = 1;
+	public float velnivel = dificultad;
 
 	public void Update(){
-		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && ui_pausa !=null){
+		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && ui_pausa !=null && !muerto){
 			if (!paused) {
 				MostrarMenuPausa ();
 			} else {
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene ("juego");
 		Time.timeScale = 1;
 		GameManager.dificultad = dificultad;
+		velnivel = dificultad;
 	}
 
 	public void VolverMenuPrincipal(){
@@ -94,6 +99,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void Reload(){
+		GameManager.dificultad = velnivel;
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
 		Time.timeScale = 1;
 	}
