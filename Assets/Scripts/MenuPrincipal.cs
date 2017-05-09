@@ -30,24 +30,30 @@ public class MenuPrincipal : MonoBehaviour {
 	}
 
 	public void MostrarDificultad(){
-		if(!dificultad)
+		if (!dificultad) {
+			GetComponent<AudioSource> ().Play();
 			ui_dificultad.SetActive (true);
+		}
 		else 
 			ui_dificultad.SetActive (false);
 		dificultad = !dificultad;
 	}
 		
 	public void MostrarControles(){
-		if (!controles)
+		if (!controles) {
+			GetComponent<AudioSource> ().Play ();
 			ui_controles.SetActive (true);
+		}
 		else
 			ui_controles.SetActive (false);
 		controles = !controles;
 	}
 
 	public void MostrarAyuda(){
-		if (!ayuda)
+		if (!ayuda) {
+			GetComponent<AudioSource> ().Play ();
 			ui_ayuda.SetActive (true);
+		}
 		else
 			ui_ayuda.SetActive (false);
 		ayuda = !ayuda;
@@ -55,8 +61,10 @@ public class MenuPrincipal : MonoBehaviour {
 	}
 
 	public void MostrarCreditos(){
-		if (!creditos)
+		if (!creditos) {
+			GetComponent<AudioSource> ().Play ();
 			ui_creditos.SetActive (true);
+		}
 		else
 			ui_creditos.SetActive (false);
 		creditos = !creditos;
