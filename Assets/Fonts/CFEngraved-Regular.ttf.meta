@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: da4d478c5c237d44c999e50bf794fb48
+timeCreated: 1494443829
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: CF Engraved
+  fontNames:
+  - CF Engraved
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
