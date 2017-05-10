@@ -14,7 +14,7 @@ public class Inmortalidad : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if (inmortal){
-			if (other.CompareTag("Muro")||other.CompareTag("Enemigo")){
+			if (other.CompareTag("Enemigo")){
 				Destroy (other.gameObject);
 			}
 		}
@@ -27,6 +27,10 @@ public class Inmortalidad : MonoBehaviour {
 					i.enabled = false;
 				}
 			}
+			GetComponent <Lanzallamas> ().enabled = false;
+			GetComponent <TripleSalto> ().enabled = false;
+			GetComponent <BotasPW> ().enabled = false;
+			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
@@ -34,7 +38,11 @@ public class Inmortalidad : MonoBehaviour {
 			Invoke("DesactivarInmortalidad",duracion);	
 		}
 	}
-
+	void OnCollisionEnter2D (Collision2D coll){
+		if (coll.gameObject.CompareTag("Muro")){
+			Destroy (coll.gameObject);
+		}
+	}
 	public void DesactivarInmortalidad(){
 		int numDesact = 0;
 		inmortal = false;
