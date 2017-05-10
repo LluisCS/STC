@@ -47,9 +47,9 @@ public class Gallina : MonoBehaviour {
 			}
 		} 
 
-		if (other.gameObject.CompareTag("PWLanzallamas")){
+		if (other.gameObject.CompareTag ("PWLanzallamas")) {
 			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
-			foreach(AnimacionGallina i in animacionGallina){
+			foreach (AnimacionGallina i in animacionGallina) {
 				if (i.nombre.Equals ("Fuego")) {
 					i.enabled = true;
 				} else {
@@ -62,12 +62,12 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			Destroy (other.gameObject, other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
 			GameManager.instance.MuestraPowerup (s);
-		}else if (other.gameObject.CompareTag("PWTripleSalto")){
+		} else if (other.gameObject.CompareTag ("PWTripleSalto")) {
 			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
-			foreach(AnimacionGallina i in animacionGallina){
+			foreach (AnimacionGallina i in animacionGallina) {
 				if (i.nombre.Equals ("Normal")) {
 					i.enabled = true;
 				} else {
@@ -80,12 +80,12 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			Destroy (other.gameObject, other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
 			GameManager.instance.MuestraPowerup (s);
-		}else if (other.gameObject.CompareTag("PWBotas")){
+		} else if (other.gameObject.CompareTag ("PWBotas")) {
 			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
-			foreach(AnimacionGallina i in animacionGallina){
+			foreach (AnimacionGallina i in animacionGallina) {
 				if (i.nombre.Equals ("Botas")) {
 					i.enabled = true;
 				} else {
@@ -98,12 +98,12 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Armadura> ().enabled = false;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			Destroy (other.gameObject, other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
 			GameManager.instance.MuestraPowerup (s);
-		}else if (other.gameObject.CompareTag("PWArmadura")){
+		} else if (other.gameObject.CompareTag ("PWArmadura")) {
 			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
-			foreach(AnimacionGallina i in animacionGallina){
+			foreach (AnimacionGallina i in animacionGallina) {
 				if (i.nombre.Equals ("Armadura")) {
 					i.enabled = true;
 				} else {
@@ -116,11 +116,21 @@ public class Gallina : MonoBehaviour {
 			GetComponent <Armadura> ().enabled = true;
 			other.gameObject.GetComponent<AudioSource> ().Play ();
 			other.gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
-			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			Destroy (other.gameObject, other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
 			GameManager.instance.MuestraPowerup (s);
+		} else if (other.gameObject.CompareTag ("PowerUp")) {
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
+			GameManager.instance.MuestraPowerup (s);
+		} else if (other.gameObject.CompareTag ("PWInmortal")) {
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
+			GameManager.instance.MuestraPowerup (s);
+			Invoke ("ClearImage", 3f);
 		}
 
 	}	
 
+	public void ClearImage(){
+		GameManager.instance.MuestraPowerup (new Sprite ());
+	}
 }
