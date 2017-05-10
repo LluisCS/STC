@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	bool paused = false;
-	public static float dificultad = 1;
+	public static float dificultad = 2;
 	float velnivel = dificultad;
 
 	public void Update(){
