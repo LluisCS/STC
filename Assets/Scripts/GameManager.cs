@@ -17,11 +17,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject hud;
 
 	bool muerto = false;
-	public float incrementoVelocidad = 0.001f;
+
 
 	void Start () {
 		instance = this;
-		InvokeRepeating ("subirVelocidad",0f, 1f);
 	}
 	//metodo que se llama desde PWx2 que al cabo de duracionX2 ejecuta el metodo desactX2
 	public void DesactivarX2(){
@@ -34,6 +33,7 @@ public class GameManager : MonoBehaviour {
 
 	public void Muerto(){
 		camara.GetComponent<AudioSource> ().Stop ();
+
 		GetComponent<AudioSource> ().Play ();
 		Time.timeScale = 0;
 		MostrarMenuFinPartida ();
@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	bool paused = false;
-	public static float dificultad = 2;
-	float velnivel = dificultad;
+	public static float dificultad = 1;
+	public float velnivel = dificultad;
 
 	public void Update(){
 		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && ui_pausa !=null && !muerto){
@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviour {
 				Pausa ();
 			}
 		}
+	}
+
+	public void FixedUpdate(){
+		dificultad += 0.0001f;
 	}
 
 	public void Pausa(){
@@ -116,12 +120,9 @@ public class GameManager : MonoBehaviour {
 
 	public void MuestraPowerup(Sprite im){
 		GameObject go = hud.transform.GetChild (2).gameObject;
+		Debug.Log (go.name);
 		Image i = go.GetComponent<Image>();
 		i.sprite = im;
 		i.color = Color.white;
-	}
-
-	void subirVelocidad(){
-		dificultad += incrementoVelocidad;
 	}
 }
