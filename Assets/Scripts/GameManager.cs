@@ -125,11 +125,13 @@ public class GameManager : MonoBehaviour {
 	public void OcultarPowerUp(string pu_name){
 		GameObject go = hud.transform.GetChild (2).gameObject;
 		Image i = go.GetComponent<Image> ();
-		if(i.sprite.name == pu_name){
-			i.color = Color.clear;
-		}
-		if(pu_name == ""){
-			i.color = Color.clear;
+		if (i.sprite != null) {
+			if(i.sprite.name == pu_name){
+				i.color = Color.clear;
+			}
+			if(pu_name == ""){
+				i.color = Color.clear;
+			}
 		}
 	}
 
