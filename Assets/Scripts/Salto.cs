@@ -15,12 +15,12 @@ public class Salto : MonoBehaviour
     {
         if (gameObject.GetComponent<TripleSalto>().isActiveAndEnabled == true) //Cuando el componente de triple salto está activo
         {
-			maxSaltos = GetComponent<TripleSalto> ().maxSaltos;                                                      //la cantidad máxima de saltos es 3
+			maxSaltos = GetComponent<TripleSalto> ().maxSaltos;                  //la cantidad máxima de saltos es 3
             //saltoX3 = true;
         }
         else
         {
-            maxSaltos = 2;                                                      //si no es 2
+            maxSaltos = 2;                                                      //si no, es 2
             //saltoX3 = false;
         }
 

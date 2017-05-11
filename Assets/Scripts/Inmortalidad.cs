@@ -13,11 +13,11 @@ public class Inmortalidad : MonoBehaviour {
 		animacionGallina = GetComponents<AnimacionGallina> ();
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if (inmortal){
-			if (other.CompareTag("Enemigo")){
-				Destroy (other.gameObject);
-			}
+		
+		if (other.CompareTag("Enemigo")&&inmortal){
+			Destroy (other.gameObject);
 		}
+	
 		if(other.CompareTag("PWInmortal")){
 			foreach(AnimacionGallina i in animacionGallina){
 				if (i.nombre.Equals ("Inmortal")) {
@@ -39,7 +39,7 @@ public class Inmortalidad : MonoBehaviour {
 		}
 	}
 	void OnCollisionEnter2D (Collision2D coll){
-		if (coll.gameObject.CompareTag("Muro")){
+		if (coll.gameObject.CompareTag("Muro")&&inmortal){
 			Destroy (coll.gameObject);
 		}
 	}

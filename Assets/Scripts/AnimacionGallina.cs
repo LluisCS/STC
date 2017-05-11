@@ -10,12 +10,15 @@ public class AnimacionGallina : MonoBehaviour {
 	public float vel;
 	int indice;
 	bool noAgachado = true,agachado = false;
+	Vector2 s,o;
 
 		// Use this for initialization
 		
 	void OnEnable () {
 		indice = 0;
 		SiguienteFrame ();
+		o = GetComponent<BoxCollider2D> ().offset;
+		s = GetComponent<BoxCollider2D> ().size;
 	}
 
 	// Update is called once per frame
@@ -31,8 +34,8 @@ public class AnimacionGallina : MonoBehaviour {
 			noAgachado = true;
 			agachado = false;
 			SiguienteFrame ();
-			GetComponent<BoxCollider2D> ().offset = new Vector2 (0f,0f);
-			GetComponent<BoxCollider2D> ().size = new Vector2 (3.518393f,2.825212f);
+			GetComponent<BoxCollider2D> ().offset = o;
+			GetComponent<BoxCollider2D> ().size = s;
 		}
 	}
 

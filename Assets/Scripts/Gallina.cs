@@ -7,31 +7,24 @@ public class Gallina : MonoBehaviour {
 
 	public static Gallina instance;
 	public GameObject camara;
-	public Component[] powerUps;
 	private float dif;
 	AnimacionGallina[] animacionGallina;
+	public AnimacionGallina g;
 	// Use this for initialization
 	void Start(){
 		dif = camara.transform.position.x - this.transform.position.x;
 		InvokeRepeating ("colocar", 0f, 0.1f);
 		animacionGallina = GetComponents<AnimacionGallina> ();
 	}
-
-	/*void Update(){
-	
-		foreach(AnimacionGallina i in animacionGallina){
-			if (i.nombre.Equals ("Fuego")) {
-				i.enabled = true;
-			} else {
-				i.enabled = false;
-			}
-		}
-	
-	}*/
-
 	void Awake () {
 		instance = this;
 	}
+	/*void Update(){
+		if(!(GetComponent<Armadura>().enabled&&GetComponent<Lanzallamas>().enabled&&GetComponent<BotasPW>().enabled
+			&&GetComponent<Inmortalidad>().inmortal)){
+			g.enabled = true;
+		}
+	}*/
 	void colocar(){
 		float dif2 = camara.transform.position.x - this.transform.position.x;
 		if (dif2 > dif+1)
