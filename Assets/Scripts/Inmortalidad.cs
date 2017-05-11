@@ -46,6 +46,7 @@ public class Inmortalidad : MonoBehaviour {
 	public void DesactivarInmortalidad(){
 		int numDesact = 0;
 		inmortal = false;
+		GameManager.instance.OcultarPowerUp ("pu_inmortal");
 		foreach(AnimacionGallina i in animacionGallina){
 			if (i.nombre.Equals ("Inmortal")) {
 				i.enabled = false;

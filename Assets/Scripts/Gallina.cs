@@ -125,8 +125,19 @@ public class Gallina : MonoBehaviour {
 			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
 			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
 			GameManager.instance.MuestraPowerup (s);
+		} else if (other.gameObject.CompareTag ("PowerUp")) {
+			Destroy (other.gameObject,other.gameObject.GetComponent<AudioSource> ().clip.length);
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer>().sprite;
+			GameManager.instance.MuestraPowerup (s);
+			Invoke ("ClearImage", 3f);
+		} else if (other.gameObject.CompareTag ("PWInmortal")) {
+			Sprite s = other.gameObject.GetComponent<SpriteRenderer> ().sprite;
+			GameManager.instance.MuestraPowerup (s);
 		}
 
 	}	
 
+	public void ClearImage(){
+		GameManager.instance.OcultarPowerUp ("");
+	}
 }
