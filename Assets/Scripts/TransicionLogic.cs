@@ -22,6 +22,12 @@ public class TransicionLogic : MonoBehaviour {
 			i = 1.8f;
 			Invoke ("RalentizarFondos",6.2f);
 		}
+		if (other.gameObject.CompareTag ("Transicion3")) {
+			fondo1.GetComponentInParent<SpriteRenderer> ().sprite = svnFinal;
+			Debug.Log ("Fondo cambiado");
+			i = 3.5f;
+			Invoke ("RalentizarFondos",6.2f);
+		}
 	}
 	void RalentizarFondos(){
 		fondo1.GetComponentInParent<MovHorizContinuo> ().velX = i;	
