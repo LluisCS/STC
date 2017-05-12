@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 	//devuelve la bonificación al valor 1 (Desactiva el powerup x2)
 	void DesactX2(){
 		bonificacion = 1;
+		OcultarPowerUp ("pu_doblep");
 	}
 
 	public void Muerto(){
