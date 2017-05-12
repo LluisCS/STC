@@ -17,11 +17,10 @@ public class GameManager : MonoBehaviour {
 	public GameObject hud;
 
 	bool muerto = false;
-	public float incrementoVelocidad = 0.001f;
 
 	void Start () {
 		instance = this;
-		InvokeRepeating ("subirVelocidad",0f, 1f);
+		subirVelocidad ();
 	}
 	//metodo que se llama desde PWx2 que al cabo de duracionX2 ejecuta el metodo desactX2
 	public void DesactivarX2(){
@@ -136,7 +135,17 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	void subirVelocidad(){
-		dificultad += incrementoVelocidad;
+	public float incrementoVelocidad = 0.001f;
+	public float frequenciaIncrementoVel = 1;
+	public bool repetirSubirVelocidad = false;
+	public void subirVelocidad(){
+		if (repetirSubirVelocidad) {
+			dificultad += incrementoVelocidad;
+			Invoke ("subirVelocidad", frequenciaIncrementoVel);
+		}
+	}
+
+	public void restauraVelocidad(){
+		dificultad = velnivel;
 	}
 }
