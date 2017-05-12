@@ -41,7 +41,7 @@ public class Salto : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D hit)
     {
-        if (hit.gameObject.tag == "Suelo")                  //Si choca con el suelo los saltos que s ehan dado se pone a 0
+		if (hit.gameObject.tag == "Suelo"||hit.gameObject.tag == "Muro")                  //Si choca con el suelo los saltos que s ehan dado se pone a 0
             currentSaltos = 0;
     }
 }

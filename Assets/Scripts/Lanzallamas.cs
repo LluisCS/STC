@@ -22,5 +22,12 @@ public class Lanzallamas : MonoBehaviour {
 			proyectilClon.transform.position = posicion.transform.position;
 			Invoke("Activar",1f);
 		}
+		if (Input.GetKeyDown (KeyCode.T) && active) {
+			active = false;
+			GameObject proyectilClon = Instantiate (proyectil);
+			proyectilClon.GetComponent<MovHorizContinuo>().velX = 2.5f*GetComponentInParent<MovHorizContinuo>().velX;
+			proyectilClon.transform.position = posicion.transform.position;
+			Invoke("Activar",1f);
+		}
 	}
 }
