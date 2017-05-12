@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class MenuPrincipal : MonoBehaviour {
 
-	public GameObject ui_dificultad, 
-	ui_controles,
-	ui_ayuda,
-	ui_creditos;
+    public GameObject ui_dificultad,
+    ui_controles,
+    ui_ayuda,
+    ui_creditos,
+    mov_creditos;
+    public MovCreditos movimientoCred;
 
 	bool dificultad, controles, ayuda, creditos;
 
@@ -61,12 +63,18 @@ public class MenuPrincipal : MonoBehaviour {
 	}
 
 	public void MostrarCreditos(){
-		if (!creditos) {
-			GetComponent<AudioSource> ().Play ();
-			ui_creditos.SetActive (true);
-		}
-		else
-			ui_creditos.SetActive (false);
-		creditos = !creditos;
+        if (!creditos)
+        {
+            GetComponent<AudioSource>().Play();
+            ui_creditos.SetActive(true);
+            movimientoCred.enabled = true;
+            movimientoCred.Reiniciar();
+        }
+        else
+        {
+            ui_creditos.SetActive(false);
+            movimientoCred.enabled = false;
+        }
+        creditos = !creditos;
 	}
 }
