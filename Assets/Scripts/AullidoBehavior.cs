@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AullidoBehavior : MonoBehaviour {
 
+	AnimacionGallina[] animacionGallina;
+	public Gallina g;
 	// Use this for initialization
 	void Start () {
 		Invoke ("Agrandar", 0.03f);
@@ -13,7 +15,7 @@ public class AullidoBehavior : MonoBehaviour {
 	void Update () {
 		if (transform.localScale.x > 7f)
 			Destroy (gameObject);
-			}
+	}
 	void OnTriggerEnter2D( Collider2D other){
 		if (other.gameObject.CompareTag ("Gallina")) {
 			other.gameObject.GetComponent <BotasPW>().enabled = false;
@@ -21,6 +23,14 @@ public class AullidoBehavior : MonoBehaviour {
 			GameManager.instance.bonificacion = 1;
 			other.gameObject.GetComponent <TripleSalto>().enabled = false;
 			other.gameObject.GetComponent <Armadura>().enabled = false;
+			animacionGallina = other.GetComponents<AnimacionGallina> ();
+			foreach(AnimacionGallina i in animacionGallina){
+				if (i.nombre.Equals ("Normal")) {
+					i.enabled = true;
+				} else if (!i.nombre.Equals ("Inmortal")) {
+					i.enabled = false;
+				}
+			}
 		}
 	}
 
