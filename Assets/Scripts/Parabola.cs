@@ -8,26 +8,37 @@ public class Parabola : MonoBehaviour {
 	public int amplitudY;
 	public int vel = 1;
 	Vector3 pos;
-	bool recorrido = true;
-
+	float anterior = 0;
+	float sin = 0;
+	float cos = 0;
 	// Use this for initialization
 	void Start () {
 		pos = this.transform.position;
+		cambiardir ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		float sin = Mathf.Sin (Time.time * vel);
+		sin = Mathf.Sin (Time.time * vel);
+		cos = Mathf.Cos(Time.time * vel);
 		this.transform.position = pos + new Vector3(
 			amplitudX * sin,
-			amplitudY * -Mathf.Abs(Mathf.Cos(Time.time * vel)));
+			amplitudY * -Mathf.Abs(cos));
+	}
 
-		if (Mathf.Abs(sin) <= 0.1f)
-			recorrido = true;
-
-		if (recorrido && Mathf.Abs(sin) >= (0.99f)) {
-			this.gameObject.transform.localScale = new Vector3 (-this.gameObject.transform.localScale.x, this.gameObject.transform.localScale.y, this.gameObject.transform.localScale.z);
-			recorrido = false;
+	void cambiardir(){
+		int dir = -1;
+		if (anterior < sin) {
+			dir = 1;
 		}
+
+		anterior = sin;
+
+		this.gameObject.transform.localScale = new Vector3 (
+			dir * Mathf.Abs(this.gameObject.transform.localScale.x), 
+			this.gameObject.transform.localScale.y, 
+			this.gameObject.transform.localScale.z);
+		
+		Invoke ("cambiardir", 0.2f);
 	}
 }
