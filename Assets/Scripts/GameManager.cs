@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour {
 		Pausa ();
 		OcultarUis ();
 		ui_fin.SetActive (true);
+		ui_fin.transform.GetChild (0).gameObject.SetActive (true);
+		ui_fin.transform.GetChild (1).gameObject.SetActive (true);
 	}
 
 	public void OcultarUis(){
@@ -147,5 +149,11 @@ public class GameManager : MonoBehaviour {
 
 	public void restauraVelocidad(){
 		dificultad = velnivel;
+	}
+
+	public void MuestraUIVictoria(){
+		ui_fin.SetActive (true);
+		ui_fin.transform.GetChild (0).gameObject.SetActive (false);
+		ui_fin.transform.GetChild (1).gameObject.SetActive (true);
 	}
 }

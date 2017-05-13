@@ -8,10 +8,9 @@ public class ParonFinal : MonoBehaviour {
 	public GameObject fondos;
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("DeadZone")){
-			g.GetComponent<MovHorizContinuo> ().enabled = false;
-			c.GetComponent<MovHorizContinuo> ().enabled = false;
-			fondos.GetComponent<MovHorizContinuo> ().enabled = false;
+		if (other.gameObject.CompareTag("Gallina")){
+			GameManager.instance.MuestraUIVictoria ();
+			GameManager.instance.Pausa ();
 		}
 	}
 }
