@@ -45,7 +45,11 @@ public class GameManager : MonoBehaviour {
 	float velnivel = dificultad;
 
 	public void Update(){
-		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && ui_pausa !=null && !muerto){
+		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) &&
+			ui_pausa !=null &&
+			!muerto &&
+			!victoria
+		){
 			if (!paused) {
 				GetComponent<AudioSource> ().clip = botones;
 				MostrarMenuPausa ();
@@ -96,7 +100,7 @@ public class GameManager : MonoBehaviour {
 		OcultarUis ();
 		ui_fin.SetActive (true);
 		ui_fin.transform.GetChild (0).gameObject.SetActive (true);
-		ui_fin.transform.GetChild (1).gameObject.SetActive (true);
+		ui_fin.transform.GetChild (1).gameObject.SetActive (false);
 	}
 
 	public void OcultarUis(){
@@ -151,9 +155,11 @@ public class GameManager : MonoBehaviour {
 		dificultad = velnivel;
 	}
 
+	bool victoria = false;
 	public void MuestraUIVictoria(){
 		ui_fin.SetActive (true);
 		ui_fin.transform.GetChild (0).gameObject.SetActive (false);
 		ui_fin.transform.GetChild (1).gameObject.SetActive (true);
+		victoria = true;
 	}
 }
