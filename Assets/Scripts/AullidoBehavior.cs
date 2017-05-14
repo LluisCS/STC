@@ -13,7 +13,7 @@ public class AullidoBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.localScale.x > 7f)
+		if (transform.localScale.x > 5f)
 			Destroy (gameObject);
 	}
 	void OnTriggerEnter2D( Collider2D other){
