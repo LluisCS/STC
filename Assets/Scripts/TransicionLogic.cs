@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransicionLogic : MonoBehaviour {
 
-	public GameObject fondo1;
+	public GameObject fondo1,fondoCueva;
 	public Sprite snv2,svn3,svnFinal;
 	float i;
 
@@ -17,7 +17,7 @@ public class TransicionLogic : MonoBehaviour {
 			Invoke ("RalentizarFondos",6.2f);
 		}
 		if (other.gameObject.CompareTag ("Transicion2")) {
-			fondo1.GetComponentInParent<SpriteRenderer> ().sprite = svn3;
+			fondoCueva.GetComponentInParent<SpriteRenderer> ().sprite = svn3;
 			Debug.Log ("Fondo cambiado");
 			i = 1.8f;
 			Invoke ("RalentizarFondos",6.2f);

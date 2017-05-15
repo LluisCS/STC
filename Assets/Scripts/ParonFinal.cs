@@ -8,7 +8,7 @@ public class ParonFinal : MonoBehaviour {
 	public GameObject fondos;
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Gallina")){
+		if (other.gameObject.CompareTag("DeadZone")){
 			GameManager.instance.MuestraUIVictoria ();
 			GameManager.instance.Pausa ();
 		}
