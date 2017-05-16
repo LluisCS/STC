@@ -17,6 +17,9 @@ public class Armadura : MonoBehaviour {
 		if (other.gameObject.CompareTag ("Muro")&&enabled) {
 			Destroy (other.gameObject);
 			golpes--;
+		}else if (other.gameObject.CompareTag ("Obstaculo")&&enabled) {
+			Destroy (other.gameObject);
+			golpes--;
 		}
 		if (golpes == 0&&anim) {
 			foreach(AnimacionGallina i in animacionGallina){

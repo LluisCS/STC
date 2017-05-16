@@ -33,7 +33,11 @@ public class Gallina : MonoBehaviour {
 			this.transform.Translate (-0.05f, 0f, 0f);
 	}
 	void OnCollisionEnter2D (Collision2D coll){
-		if (coll.gameObject.CompareTag ("Obstaculo")){
+		if (coll.gameObject.CompareTag ("Obstaculo")&&(!GetComponent<Armadura>().enabled)){
+			Debug.Log ("Has muerto");
+			if (coll.gameObject.GetComponent<AudioSource> () != null) {
+				coll.gameObject.GetComponent<AudioSource> ().Stop ();
+			}
 			GameManager.instance.Muerto ();
 		}
 	}
@@ -52,7 +56,6 @@ public class Gallina : MonoBehaviour {
 				GameManager.instance.Muerto ();
 			}
 		}
-
 		if (other.gameObject.CompareTag("PWLanzallamas")){
 			GetComponent<Inmortalidad> ().DesactivarInmortalidad ();
 			foreach(AnimacionGallina i in animacionGallina){
