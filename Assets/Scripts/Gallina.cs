@@ -40,9 +40,16 @@ public class Gallina : MonoBehaviour {
 			}
 			GameManager.instance.Muerto ();
 		}
-	}
-	void OnTriggerEnter2D(Collider2D other){
-		if (!GetComponent<Inmortalidad> ().inmortal) {
+    }
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.gameObject.CompareTag("Obstaculo") && (!GetComponent<Armadura>().enabled) && (!GetComponent<Inmortalidad>().enabled))
+        {
+            Debug.Log("Has muerto");
+            if (other.gameObject.GetComponent<AudioSource>() != null)
+                other.gameObject.GetComponent<AudioSource>().Stop();
+            GameManager.instance.Muerto();
+        }
+        if (!GetComponent<Inmortalidad> ().inmortal) {
 			if (other.gameObject.CompareTag ("Enemigo") || other.gameObject.CompareTag ("DeadZone")) {
 				Debug.Log ("Has muerto");
 				if (other.gameObject.GetComponent<AudioSource> () != null) {
