@@ -16,11 +16,11 @@ public class MovCreditos : MonoBehaviour {
 		Debug.Log (velocidad + "*" + Time.deltaTime + "=" + movimiento + "(" + desplazamiento + ")");
     }
 
-    public void Reiniciar()
+   /* public void Reiniciar()
     {
         Debug.Log("posicion creditos " + transform.position.y + "Desplazamiento -" + desplazamiento);
         transform.Translate(new Vector3(0, -desplazamiento, 0));
         desplazamiento = 0;
         Debug.Log("Nueva posicion: " + transform.position.y);
-    }
+    }*/
 }

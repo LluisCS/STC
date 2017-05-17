@@ -68,7 +68,7 @@ public class MenuPrincipal : MonoBehaviour {
             GetComponent<AudioSource>().Play();
             ui_creditos.SetActive(true);
             movimientoCred.enabled = true;
-            movimientoCred.Reiniciar();
+            //movimientoCred.Reiniciar();
         }
         else
         {
