@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour {
 	public void VolverMenuPrincipal(){
 		GetComponent<AudioSource> ().Play ();
 		SceneManager.LoadScene ("menu");
+		Pausa ();
 	}
 
 

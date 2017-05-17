@@ -10,9 +10,10 @@ public class MovCreditos : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        movimiento = velocidad * Time.deltaTime;
+		movimiento = velocidad * Time.deltaTime;
 		transform.Translate(new Vector3(0, movimiento, 0));
-        desplazamiento += movimiento;
+		desplazamiento += movimiento;
+		Debug.Log (velocidad + "*" + Time.deltaTime + "=" + movimiento + "(" + desplazamiento + ")");
     }
 
     public void Reiniciar()
