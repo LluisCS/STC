@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour {
 	bool paused = false;
 	public static float dificultad = 2;
 	float velnivel = dificultad;
+	public static float velAnimacion = 0.1f;
 
 	public void Update(){
 		if((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) &&
@@ -75,6 +76,9 @@ public class GameManager : MonoBehaviour {
 		Time.timeScale = 1;
 		GameManager.dificultad = dificultad;
 		velnivel = dificultad;
+	}
+	public void VelAnimacion(float velAnimacion){
+		GameManager.velAnimacion = velAnimacion;
 	}
 
 	public void VolverMenuPrincipal(){
@@ -145,6 +149,7 @@ public class GameManager : MonoBehaviour {
 	public float incrementoVelocidad = 0.001f;
 	public float frequenciaIncrementoVel = 1;
 	public bool repetirSubirVelocidad = false;
+
 	public void subirVelocidad(){
 		if (repetirSubirVelocidad) {
 			dificultad += incrementoVelocidad;

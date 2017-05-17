@@ -20,17 +20,19 @@ public class AnimacionGallina : MonoBehaviour {
 		o = GetComponent<BoxCollider2D> ().offset;
 		s = GetComponent<BoxCollider2D> ().size;
 	}
-
+	void Start(){
+		vel = GameManager.velAnimacion;		
+	}
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.LeftShift)) {  
+		if (Input.GetKeyDown(KeyCode.LeftShift)||Input.GetKeyDown(KeyCode.S)) {  
 			noAgachado = false;
 			agachado = true;
 			GetComponent<BoxCollider2D> ().offset = new Vector2 (0f,-0.5f);
 			GetComponent<BoxCollider2D> ().size = new Vector2 (3.518393f,1.25f);
 			SiguienteFrameAgachado ();
 
-		}else if (Input.GetKeyUp(KeyCode.LeftShift)) {  
+		}else if (Input.GetKeyUp(KeyCode.LeftShift)||Input.GetKeyUp(KeyCode.S)) {  
 			noAgachado = true;
 			agachado = false;
 			SiguienteFrame ();

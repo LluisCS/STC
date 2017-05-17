@@ -33,7 +33,8 @@ public class Gallina : MonoBehaviour {
 			this.transform.Translate (-0.05f, 0f, 0f);
 	}
 	void OnCollisionEnter2D (Collision2D coll){
-		if (coll.gameObject.CompareTag ("Obstaculo")&&(!GetComponent<Armadura>().enabled)){
+		if (coll.gameObject.CompareTag ("Obstaculo") && (!GetComponent<Armadura> ().enabled) && (!GetComponent<BotasPW> ().enabled))
+			{
 			Debug.Log ("Has muerto");
 			if (coll.gameObject.GetComponent<AudioSource> () != null) {
 				coll.gameObject.GetComponent<AudioSource> ().Stop ();
@@ -42,7 +43,8 @@ public class Gallina : MonoBehaviour {
 		}
     }
     void OnTriggerEnter2D(Collider2D other){
-        if (other.gameObject.CompareTag("Obstaculo") && (!GetComponent<Armadura>().enabled) && (!GetComponent<Inmortalidad>().inmortal))
+        if (other.gameObject.CompareTag("Obstaculo") && (!GetComponent<Armadura>().enabled) && 
+			(!GetComponent<Inmortalidad>().inmortal)&& (!GetComponent<BotasPW> ().enabled))
         {
             Debug.Log("Has muerto");
             if (other.gameObject.GetComponent<AudioSource>() != null)

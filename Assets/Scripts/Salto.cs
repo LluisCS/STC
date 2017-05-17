@@ -24,7 +24,7 @@ public class Salto : MonoBehaviour
             //saltoX3 = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.W))
         {
             if (currentSaltos < maxSaltos)                  //Al pulsar "espacio" si no se han dado el máximo de saltos, salta
             {
