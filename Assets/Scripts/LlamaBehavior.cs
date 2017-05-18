@@ -26,7 +26,7 @@ public class LlamaBehavior : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 	void OnTriggerEnter2D (Collider2D other){
-		if (other.gameObject.CompareTag ("Enemigo")) {
+		if (other.gameObject.CompareTag ("Enemigo")||other.gameObject.CompareTag ("Cabeza")) {
 			Destroy (other.gameObject);
 			Debug.Log ("destruido");
 		}

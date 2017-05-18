@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ParonFinal : MonoBehaviour {
-	public Gallina g;
 	public Camera c;
-	public GameObject fondos;
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.CompareTag("DeadZone")){
+			c.GetComponent<AudioSource> ().Stop ();
+			GameManager.instance.GetComponent<AudioSource> ().Play ();
 			GameManager.instance.MuestraUIVictoria ();
 			GameManager.instance.Pausa ();
 		}
